@@ -1,0 +1,20 @@
+{
+  "name": "legos",
+  "version": "1.0.0",
+  "description": "My component library.",
+  "homepage": "https://github.com/imforked/legos#readme",
+  "bugs": {
+    "url": "https://github.com/imforked/legos/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imforked/legos.git"
+  },
+  "license": "ISC",
+  "author": "10011101",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  }
+}
