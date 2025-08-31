@@ -15,7 +15,4 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
-  rules: {
-    // Add custom rules here if needed
-  },
 };
