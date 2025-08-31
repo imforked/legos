@@ -1,18 +1,16 @@
-import { Button } from './components/Button/Button';
-import { Input } from './components/Input/Input';
+import * as S from './ComponentLibrary.styles';
+import { LIBRARY_DATA } from './ComponentLibrary.config';
 
-function App() {
-  return (
-    <>
-      <Button text="Button.tsx" />
-      <Input
-        label="Input.tsx"
-        placeholder="Placeholder"
-        showError
-        errorMessage="*You've fucked up"
-      />
-    </>
-  );
+function ComponentLibrary() {
+  return LIBRARY_DATA.map(({ metaData, component }) => (
+    <S.ComponentContainer>
+      <S.MetaDescriptionContainer>
+        <S.Title>{metaData.title}</S.Title>
+        <S.Description>{metaData.description}</S.Description>
+      </S.MetaDescriptionContainer>
+      {component}
+    </S.ComponentContainer>
+  ));
 }
 
-export default App;
+export default ComponentLibrary;
