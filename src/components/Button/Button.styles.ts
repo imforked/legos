@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../theme';
+import { theme } from '../../constants/theme';
 
 export const Button = styled.button`
   width: fit-content;

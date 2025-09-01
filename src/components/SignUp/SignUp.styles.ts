@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../Button/Button';
-import { theme } from '../theme';
+import { theme } from '../../constants/theme';
 
 export const SignUpContainer = styled.div`
   border: 1px solid ${theme.colors.white};
