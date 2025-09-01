@@ -1,6 +1,6 @@
-import express from "express";
-import type { Server } from "./index.types";
-import { createErrorHandler } from "./helpers/createErrorHandler";
+import express from 'express';
+import type { Server } from './index.types';
+import { createErrorHandler } from './helpers/createErrorHandler';
 
 export const createServer = ({
   routes = [],
