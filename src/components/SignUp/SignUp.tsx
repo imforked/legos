@@ -6,11 +6,15 @@ import { Input } from '../Input/Input';
 export const SignUp = ({ variant = SignUpVariant.FullName }: SignUpProps) => {
   return (
     <S.SignUpContainer>
-      <Input label="First Name" />
-      <Input label="Last Name" />
-      <Input label="Password" />
-      <Input label="Re-Type Password" />
-      <Button text="Submit" />
+      <S.FieldGroup>
+        <Input label="First Name" />
+        <Input label="Last Name" />
+      </S.FieldGroup>
+      <S.FieldGroup>
+        <Input label="Password" />
+        <Input label="Re-Type Password" />
+      </S.FieldGroup>
+      <S.StyledButton text="Create Account" />
     </S.SignUpContainer>
   );
 };

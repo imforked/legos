@@ -7,4 +7,5 @@ export type ButtonProps = {
   href?: string;
   onClick?: () => void;
   variant?: ButtonVariant;
+  className?: string;
 };

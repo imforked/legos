@@ -4,6 +4,7 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
+  width: 100%;
 `;
 
 export const Label = styled.label`
