@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { theme } from './components/theme';
 
 export const ComponentContainer = styled.div`
   width: 100%;
-  border-bottom: 1px dashed #fffaf1;
+  border-bottom: 1px dashed ${theme.colors.white};
   padding: 20px 10px;
 `;
 
@@ -12,9 +13,9 @@ export const MetaDescriptionContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #fffaf1;
+  color: ${theme.colors.white};
 `;
 
 export const Description = styled.span`
-  color: #fffaf1;
+  color: ${theme.colors.white};
 `;

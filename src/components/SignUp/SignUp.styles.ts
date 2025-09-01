@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Button } from '../Button/Button';
+import { theme } from '../theme';
 
 export const SignUpContainer = styled.div`
-  border: 1px solid #fffaf1;
+  border: 1px solid ${theme.colors.white};
   padding: 10px;
   border-radius: 10px;
 `;
