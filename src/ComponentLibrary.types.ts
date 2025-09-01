@@ -1,6 +1,6 @@
 export type LibraryData = {
   metaData: MetaData;
-  component: React.ReactElement;
+  component: React.ReactNode;
 }[];
 
 export type MetaData = {
