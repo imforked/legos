@@ -1,6 +1,6 @@
 import type { RequestHandler } from 'express';
 
-enum RequestMethod {
+export enum RequestMethod {
   GET = 'get',
   POST = 'post',
   PUT = 'put',
@@ -10,7 +10,7 @@ enum RequestMethod {
 export interface Route {
   path: string;
   method: RequestMethod;
-  handler: RequestHandler;
+  requestHandler: RequestHandler;
 }
 
 export interface Server {

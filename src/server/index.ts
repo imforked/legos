@@ -13,8 +13,8 @@ export const createServer = ({
   middleware.forEach((mw) => app.use(mw));
 
   // Register routes
-  routes.forEach(({ path, method, handler }) => {
-    app[method](path, handler);
+  routes.forEach(({ path, method, requestHandler }) => {
+    app[method](path, requestHandler);
   });
 
   // Global error handling
