@@ -1,13 +1,8 @@
 import express from 'express';
-import type {
-  Server,
-  Route,
-  HttpError,
-  ErrorHandlerResult,
-} from './index.types';
-import { RequestMethod } from './index.types';
+import type { Server } from './index.types.js';
 import { createErrorHandler } from './helpers/createErrorHandler.js';
 import { httpError } from './helpers/httpError.js';
+import { RequestMethod } from './valueTypes.js';
 
 export const createServer = ({
   routes = [],
@@ -16,21 +11,26 @@ export const createServer = ({
 }: Server) => {
   const app = express();
 
-  // Register middleware
   middleware.forEach((mw) => app.use(mw));
 
-  // Register routes
   routes.forEach(({ path, method, requestHandler }) => {
     app[method](path, requestHandler);
   });
 
-  // Global error handling
   app.use(createErrorHandler(onError));
 
   return app;
 };
 
-export { RequestMethod };
+// Export types (only exist at compile time)
+export type {
+  Server,
+  Route,
+  HttpError,
+  ErrorHandlerResult,
+} from './index.types.js';
+
+// Export runtime values
+export { RequestMethod } from './valueTypes.js';
 export { createErrorHandler } from './helpers/createErrorHandler.js';
 export { httpError } from './helpers/httpError.js';
-export type { Server, Route, HttpError, ErrorHandlerResult };
