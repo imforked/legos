@@ -1,5 +1,5 @@
 import express from 'express';
-import type { Server } from './index.types';
+import type { Server } from './index.types.js';
 import { createErrorHandler } from './helpers/createErrorHandler.js';
 import { httpError } from './helpers/httpError.js';
 
