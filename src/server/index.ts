@@ -24,6 +24,14 @@ export const createServer = ({
   return app;
 };
 
-export type * from './index.types';
+export { RequestMethod } from './index.types';
+
+export type {
+  Route,
+  Server,
+  HttpError,
+  ErrorHandlerResult,
+} from './index.types';
+
 export { createErrorHandler } from './helpers/createErrorHandler.js';
 export { httpError } from './helpers/httpError.js';
