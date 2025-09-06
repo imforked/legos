@@ -22,3 +22,5 @@ export const createServer = ({
 
   return app;
 };
+
+export * from '../server';
