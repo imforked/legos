@@ -1,6 +1,6 @@
 {
   "name": "@imforked/legos",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./dist/components.cjs.js",
   "module": "./dist/components.es.js",
   "types": "./dist/types/index.d.ts",
@@ -44,30 +44,14 @@
   },
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/components.es.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/components.cjs.js"
-      }
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/components.es.js",
+      "require": "./dist/components.cjs.js"
     },
     "./server": {
-      "import": {
-        "types": "./dist/server/index.d.ts",
-        "default": "./dist/server/index.js"
-      },
-      "require": {
-        "types": "./dist/server/index.d.ts",
-        "default": "./dist/server/index.js"
-      }
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "server": ["dist/server/index.d.ts"],
-      "*": ["dist/types/index.d.ts"]
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js",
+      "require": "./dist/server/index.js"
     }
   },
   "files": [
