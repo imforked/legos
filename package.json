@@ -64,6 +64,12 @@
       }
     }
   },
+  "typesVersions": {
+    "*": {
+      "server": ["dist/server/index.d.ts"],
+      "*": ["dist/types/index.d.ts"]
+    }
+  },
   "files": [
     "dist"
   ]
