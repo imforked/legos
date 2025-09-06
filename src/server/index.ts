@@ -1,5 +1,11 @@
 import express from 'express';
-import type { Server } from './index.types';
+import type {
+  Server,
+  Route,
+  HttpError,
+  ErrorHandlerResult,
+} from './index.types';
+import { RequestMethod } from './index.types';
 import { createErrorHandler } from './helpers/createErrorHandler.js';
 import { httpError } from './helpers/httpError.js';
 
@@ -24,14 +30,7 @@ export const createServer = ({
   return app;
 };
 
-export { RequestMethod } from './index.types';
-
-export type {
-  Route,
-  Server,
-  HttpError,
-  ErrorHandlerResult,
-} from './index.types';
-
+export { RequestMethod };
 export { createErrorHandler } from './helpers/createErrorHandler.js';
 export { httpError } from './helpers/httpError.js';
+export type { Server, Route, HttpError, ErrorHandlerResult };
