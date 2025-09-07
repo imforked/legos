@@ -8,7 +8,10 @@ import {
 import * as S from './SignUp.styles';
 import { Input } from '../Input/Input';
 
-export const SignUp = ({ variant = SignUpVariant.FullName }: SignUpProps) => {
+export const SignUp = ({
+  variant = SignUpVariant.FullName,
+  action,
+}: SignUpProps) => {
   const [formData, setFormData] = useState<FormData>({
     [SignUpField.firstName]: '',
     [SignUpField.lastName]: '',
@@ -27,7 +30,7 @@ export const SignUp = ({ variant = SignUpVariant.FullName }: SignUpProps) => {
   };
 
   return (
-    <S.SignUpContainer onSubmit={handleSubmit}>
+    <S.SignUpContainer action={action} method="POST" onSubmit={handleSubmit}>
       <S.FieldGroup>
         <Input
           label="First Name"

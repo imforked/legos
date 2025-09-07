@@ -7,6 +7,7 @@ export enum SignUpVariant {
 export type SignUpProps = {
   hasRECAPTCHA?: boolean;
   variant?: SignUpVariant;
+  action: string;
 };
 
 export enum SignUpField {
