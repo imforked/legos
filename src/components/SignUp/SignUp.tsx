@@ -7,8 +7,8 @@ export const SignUp = ({ variant = SignUpVariant.FullName }: SignUpProps) => {
   return (
     <S.SignUpContainer>
       <S.FieldGroup>
-        <Input label="First Name" />
-        <Input label="Last Name" />
+        <Input label="The Name" />
+        <Input label="After Name" />
       </S.FieldGroup>
       <S.FieldGroup>
         <Input label="Password" />
