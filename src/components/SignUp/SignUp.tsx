@@ -19,8 +19,14 @@ export const SignUp = ({
     [SignUpField.passwordCheck]: '',
   });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    await fetch(action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
   };
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
