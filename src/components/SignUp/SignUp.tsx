@@ -1,4 +1,4 @@
-import { FormEvent, ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import {
   SignUpVariant,
   type SignUpProps,
@@ -7,6 +7,8 @@ import {
 } from './SignUp.types';
 import * as S from './SignUp.styles';
 import { Input } from '../Input/Input';
+import { handleOnChange, handleSubmit } from './helpers';
+import { type Error } from './helpers/handleSubmit';
 
 export const SignUp = ({
   variant = SignUpVariant.FullName,
@@ -18,37 +20,28 @@ export const SignUp = ({
     [SignUpField.password]: '',
     [SignUpField.passwordCheck]: '',
   });
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    await fetch(action, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-  };
-
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const [error, setError] = useState<Error>({});
 
   return (
-    <S.SignUpContainer action={action} method="POST" onSubmit={handleSubmit}>
+    <S.SignUpContainer
+      action={action}
+      method="POST"
+      onSubmit={(e) => handleSubmit({ e, action, formData, setError })}
+    >
       <S.FieldGroup>
         <Input
           label="First Name"
           name={SignUpField.firstName}
           value={formData.firstName}
-          onChange={handleOnChange}
+          onChange={(e) => handleOnChange({ e, setState: setFormData })}
+          errorMessage={error.firstName}
         />
         <Input
           label="Last Name"
           name={SignUpField.lastName}
           value={formData.lastName}
-          onChange={handleOnChange}
+          onChange={(e) => handleOnChange({ e, setState: setFormData })}
+          errorMessage={error.lastName}
         />
       </S.FieldGroup>
       <S.FieldGroup>
@@ -57,14 +50,16 @@ export const SignUp = ({
           label="Password"
           name={SignUpField.password}
           value={formData.password}
-          onChange={handleOnChange}
+          onChange={(e) => handleOnChange({ e, setState: setFormData })}
+          errorMessage={error.password}
         />
         <Input
           type="password"
           label="Re-Type Password"
           name={SignUpField.passwordCheck}
           value={formData.passwordCheck}
-          onChange={handleOnChange}
+          onChange={(e) => handleOnChange({ e, setState: setFormData })}
+          errorMessage={error.passwordCheck}
         />
       </S.FieldGroup>
       <S.StyledButton text="Create Account" type="submit" />

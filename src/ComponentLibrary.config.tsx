@@ -18,7 +18,6 @@ export const LIBRARY_DATA: LibraryData = [
       <Input
         label="Label"
         placeholder="Placeholder"
-        showError
         errorMessage="*You've fucked up"
       />
     ),
@@ -27,6 +26,6 @@ export const LIBRARY_DATA: LibraryData = [
     metaData: {
       title: 'SignUp',
     },
-    component: <SignUp />,
+    component: <SignUp action="" />,
   },
 ];
