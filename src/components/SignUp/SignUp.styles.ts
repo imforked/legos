@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Button } from '../Button/Button';
 import { theme } from '../../constants/theme';
 
-export const SignUpContainer = styled.div`
+export const SignUpContainer = styled.form`
   border: 1px solid ${theme.colors.white};
   padding: 10px;
   border-radius: 10px;

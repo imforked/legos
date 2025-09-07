@@ -7,9 +7,10 @@ export const Button = ({
   href,
   onClick,
   className,
+  ...props
 }: ButtonProps) => {
   return (
-    <S.Button onClick={onClick} className={className}>
+    <S.Button {...props} onClick={onClick} className={className}>
       {text}
     </S.Button>
   );
