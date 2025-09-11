@@ -8,7 +8,7 @@ import {
 import * as S from './SignUp.styles';
 import { Input } from '../Input/Input';
 import { handleOnChange, handleSubmit } from './helpers';
-import { type Error } from './helpers/handleSubmit';
+import { type FieldError } from './helpers/handleSubmit';
 
 export const SignUp = ({
   variant = SignUpVariant.FullName,
@@ -20,7 +20,7 @@ export const SignUp = ({
     [SignUpField.password]: '',
     [SignUpField.passwordCheck]: '',
   });
-  const [error, setError] = useState<Error>({});
+  const [error, setError] = useState<FieldError>({});
 
   return (
     <S.SignUpContainer
