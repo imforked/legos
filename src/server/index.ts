@@ -15,6 +15,10 @@ export const createServer = ({
 
   app.use(cors(corsOptions));
 
+  // Add default body parsers
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
   middleware.forEach((mw) => app.use(mw));
 
   routes.forEach(({ path, method, requestHandler }) => {
