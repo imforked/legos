@@ -48,7 +48,8 @@ export const handleSubmit = async ({
 
     const properties = flattened.fieldErrors ?? {};
     for (const [field, messages] of Object.entries(properties)) {
-      if (messages && messages.length > 0) {
+      if (messages.length > 0) {
+        // Show only the first error message so we don't overwhelm the user
         fieldErrors[field as keyof FormData] = messages[0];
       }
     }
