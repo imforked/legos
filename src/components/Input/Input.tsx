@@ -5,7 +5,6 @@ export const Input = ({
   name,
   label,
   placeholder,
-  showError,
   errorMessage,
   onChange,
   ...props
@@ -19,7 +18,7 @@ export const Input = ({
         placeholder={placeholder}
         onChange={onChange}
       />
-      {showError && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
+      {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
     </S.InputContainer>
   );
 };

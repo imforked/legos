@@ -1,6 +1,6 @@
 {
   "name": "@imforked/legos",
-  "version": "0.0.18",
+  "version": "0.0.21",
   "main": "./dist/components.cjs.js",
   "module": "./dist/components.es.js",
   "types": "./dist/types/index.d.ts",
@@ -14,6 +14,7 @@
     "build": "npm run build:components && npm run build:server"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   },
   "peerDependencies": {
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
@@ -40,7 +42,8 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.4",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "zod": "^4.1.5"
   },
   "exports": {
     ".": {
