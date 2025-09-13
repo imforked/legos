@@ -1,3 +1,3 @@
-import { SignUpSchema } from './signUp';
+import { SignUpSchema } from './signUp.js';
 
 export { SignUpSchema };
