@@ -12,7 +12,7 @@ export interface Server {
   routes?: Route[];
   middleware?: RequestHandler[];
   onError?: (err: unknown) => { status?: number; body?: any } | void;
-  corsOptions?: CorsOptions
+  corsOptions?: CorsOptions;
 }
 
 export interface HttpError {
