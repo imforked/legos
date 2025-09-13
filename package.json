@@ -1,6 +1,6 @@
 {
   "name": "@imforked/legos",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "main": "./dist/components.cjs.js",
   "module": "./dist/components.es.js",
   "types": "./dist/types/index.d.ts",
