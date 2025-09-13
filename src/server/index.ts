@@ -36,6 +36,9 @@ export type {
   ErrorHandlerResult,
 } from './index.types.js';
 
+// Form validation schemas
+export { SignUpSchema } from './schemas/index.js';
+
 // Export runtime values
 export { RequestMethod } from './valueTypes.js';
 export { createErrorHandler } from './helpers/createErrorHandler.js';
