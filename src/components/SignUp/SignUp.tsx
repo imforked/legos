@@ -9,6 +9,7 @@ import * as S from './SignUp.styles';
 import { Input } from '../Input/Input';
 import { handleOnChange, handleSubmit } from './helpers';
 import { type FieldError } from './helpers/handleSubmit';
+import { SignUpSchema } from './SignUp.schema';
 
 export const SignUp = ({
   variant = SignUpVariant.FullName,
@@ -66,3 +67,5 @@ export const SignUp = ({
     </S.SignUpContainer>
   );
 };
+
+export { SignUpSchema };
