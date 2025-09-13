@@ -6,12 +6,13 @@
   "types": "./dist/types/index.d.ts",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf dist",
     "dev": "vite",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
     "build:components": "vite build",
     "build:server": "tsc -p tsconfig.node.json",
-    "build": "npm run build:components && npm run build:server"
+    "build": "npm run clean && npm run build:components && npm run build:server"
   },
   "dependencies": {
     "cors": "^2.8.5",

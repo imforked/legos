@@ -1,4 +1,4 @@
-import type { HttpError } from '../index.types';
+import type { HttpError } from '../index.types.ts';
 
 export const httpError = (
   statusCode: number,

@@ -1,5 +1,5 @@
 import type { ErrorRequestHandler } from 'express';
-import type { HttpError, ErrorHandlerResult } from '../index.types';
+import type { HttpError, ErrorHandlerResult } from '../index.types.ts';
 
 export const createErrorHandler = (
   onError?: (err: unknown) => ErrorHandlerResult | void
