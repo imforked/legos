@@ -9,6 +9,7 @@ export const SignUpSchema = z
       .string()
       .min(5, 'Password needs to be at least 5 characters'),
     [SignUpField.passwordCheck]: z.string(),
+    [SignUpField.recaptchaToken]: z.string().min(1, 'Complete the reCAPTCHA'),
   })
   .refine(
     (data) => data[SignUpField.password] === data[SignUpField.passwordCheck],

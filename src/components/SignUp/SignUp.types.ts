@@ -5,9 +5,9 @@ export enum SignUpVariant {
 }
 
 export type SignUpProps = {
-  hasRECAPTCHA?: boolean;
   variant?: SignUpVariant;
   action: string;
+  recaptchaSiteKey?: string;
 };
 
 export enum SignUpField {
@@ -15,6 +15,7 @@ export enum SignUpField {
   lastName = 'lastName',
   password = 'password',
   passwordCheck = 'passwordCheck',
+  recaptchaToken = 'recaptchaToken',
 }
 
 export type FormData = {

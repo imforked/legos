@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import {
   SignUpVariant,
   type SignUpProps,
@@ -13,6 +14,7 @@ import { type FieldError } from './helpers/handleSubmit';
 export const SignUp = ({
   variant = SignUpVariant.FullName,
   action,
+  recaptchaSiteKey,
 }: SignUpProps) => {
   const [formData, setFormData] = useState<FormData>({
     [SignUpField.firstName]: '',
@@ -21,12 +23,31 @@ export const SignUp = ({
     [SignUpField.passwordCheck]: '',
   });
   const [error, setError] = useState<FieldError>({});
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // TODO: integrate with zod
+    if (recaptchaSiteKey && !recaptchaToken) {
+      alert('Please complete the reCAPTCHA');
+      return;
+    }
+
+    handleSubmit({
+      e: e as React.FormEvent<HTMLFormElement>,
+      action,
+      formData,
+      setError,
+      recaptchaToken,
+    });
+  };
 
   return (
     <S.SignUpContainer
       action={action}
       method="POST"
-      onSubmit={(e) => handleSubmit({ e, action, formData, setError })}
+      onSubmit={handleFormSubmit}
     >
       <S.FieldGroup>
         <Input
@@ -62,6 +83,11 @@ export const SignUp = ({
           errorMessage={error.passwordCheck}
         />
       </S.FieldGroup>
+
+      {recaptchaSiteKey && (
+        <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={setRecaptchaToken} />
+      )}
+
       <S.StyledButton text="Create Account" type="submit" />
     </S.SignUpContainer>
   );
