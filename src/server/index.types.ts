@@ -1,5 +1,5 @@
 import type { RequestHandler } from 'express';
-import type { RequestMethod } from './valueTypes.ts';
+import type { RequestMethod } from './valueTypes';
 import { CorsOptions } from 'cors';
 
 export interface Route {
