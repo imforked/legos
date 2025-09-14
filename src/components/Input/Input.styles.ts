@@ -29,4 +29,5 @@ export const Input = styled.input`
 export const ErrorMessage = styled.span`
   color: #ff4d4f;
   font-size: 14px;
+  text-align: start;
 `;

@@ -1,5 +1,5 @@
 import type { RequestHandler } from 'express';
-import type { RequestMethod } from './valueTypes';
+import type { RequestMethod } from './valueTypes.ts';
 import { CorsOptions } from 'cors';
 
 export interface Route {
@@ -12,7 +12,7 @@ export interface Server {
   routes?: Route[];
   middleware?: RequestHandler[];
   onError?: (err: unknown) => { status?: number; body?: any } | void;
-  corsOptions?: CorsOptions
+  corsOptions?: CorsOptions;
 }
 
 export interface HttpError {

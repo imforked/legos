@@ -1,9 +1,7 @@
 import express from 'express';
-import cors, { CorsOptions } from 'cors';
+import cors from 'cors';
 import type { Server } from './index.types.js';
 import { createErrorHandler } from './helpers/createErrorHandler.js';
-import { httpError } from './helpers/httpError.js';
-import { RequestMethod } from './valueTypes.js';
 
 export const createServer = ({
   routes = [],
@@ -37,6 +35,9 @@ export type {
   HttpError,
   ErrorHandlerResult,
 } from './index.types.js';
+
+// Form validation schemas
+export { SignUpSchema } from './schemas/index.js';
 
 // Export runtime values
 export { RequestMethod } from './valueTypes.js';
