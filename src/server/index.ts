@@ -43,3 +43,4 @@ export { SignUpSchema } from './schemas/index.js';
 export { RequestMethod } from './valueTypes.js';
 export { createErrorHandler } from './helpers/createErrorHandler.js';
 export { httpError } from './helpers/httpError.js';
+export { verifyRecaptcha } from './helpers/verifyRecaptcha.js';
