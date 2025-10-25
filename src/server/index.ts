@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import type { Server } from './index.types.js';
 import { createErrorHandler } from './helpers/createErrorHandler.js';
+import { ExpectedAction } from './helpers/verifyRecaptcha.js';
 
 export const createServer = ({
   routes = [],
@@ -43,4 +44,4 @@ export { SignUpSchema } from './schemas/index.js';
 export { RequestMethod } from './valueTypes.js';
 export { createErrorHandler } from './helpers/createErrorHandler.js';
 export { httpError } from './helpers/httpError.js';
-export { verifyRecaptcha } from './helpers/verifyRecaptcha.js';
+export { verifyRecaptcha, ExpectedAction } from './helpers/verifyRecaptcha.js';
