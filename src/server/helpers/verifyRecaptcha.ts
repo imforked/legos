@@ -2,7 +2,7 @@ import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterp
 
 const client = new RecaptchaEnterpriseServiceClient();
 
-enum ExpectedAction {
+export enum ExpectedAction {
   SignUp = 'sign-up',
 }
 
