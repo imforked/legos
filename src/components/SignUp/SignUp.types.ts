@@ -13,6 +13,8 @@ export type SignUpProps = {
 export enum SignUpField {
   firstName = 'firstName',
   lastName = 'lastName',
+  email = 'email',
+  emailCheck = 'emailCheck',
   password = 'password',
   passwordCheck = 'passwordCheck',
   recaptchaToken = 'recaptchaToken',
@@ -21,6 +23,8 @@ export enum SignUpField {
 export type FormData = {
   [SignUpField.firstName]: string;
   [SignUpField.lastName]: string;
+  [SignUpField.email]: string;
+  [SignUpField.emailCheck]: string;
   [SignUpField.password]: string;
   [SignUpField.passwordCheck]: string;
 };

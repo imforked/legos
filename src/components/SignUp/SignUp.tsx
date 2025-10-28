@@ -19,6 +19,8 @@ export const SignUp = ({
   const [formData, setFormData] = useState<FormData>({
     [SignUpField.firstName]: '',
     [SignUpField.lastName]: '',
+    [SignUpField.email]: '',
+    [SignUpField.emailCheck]: '',
     [SignUpField.password]: '',
     [SignUpField.passwordCheck]: '',
   });
@@ -63,6 +65,20 @@ export const SignUp = ({
           value={formData.lastName}
           onChange={(e) => handleOnChange({ e, setState: setFormData })}
           errorMessage={error.lastName}
+        />
+        <Input
+          label="Email"
+          name={SignUpField.email}
+          value={formData.email}
+          onChange={(e) => handleOnChange({ e, setState: setFormData })}
+          errorMessage={error.email}
+        />
+        <Input
+          label="Re-Type Email"
+          name={SignUpField.emailCheck}
+          value={formData.emailCheck}
+          onChange={(e) => handleOnChange({ e, setState: setFormData })}
+          errorMessage={error.emailCheck}
         />
       </S.FieldGroup>
       <S.FieldGroup>
