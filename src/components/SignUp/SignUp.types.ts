@@ -27,4 +27,5 @@ export type FormData = {
   [SignUpField.emailCheck]: string;
   [SignUpField.password]: string;
   [SignUpField.passwordCheck]: string;
+  [SignUpField.recaptchaToken]: string;
 };

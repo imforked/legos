@@ -13,7 +13,7 @@ import { type FieldError } from './helpers/handleSubmit';
 
 export const SignUp = ({
   variant = SignUpVariant.FullName,
-  action,
+  action = 'http://localhost:4000/signup',
   recaptchaSiteKey,
 }: SignUpProps) => {
   const [formData, setFormData] = useState<FormData>({
@@ -23,23 +23,29 @@ export const SignUp = ({
     [SignUpField.emailCheck]: '',
     [SignUpField.password]: '',
     [SignUpField.passwordCheck]: '',
+    [SignUpField.recaptchaToken]: '',
   });
+
   const [error, setError] = useState<FieldError>({});
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // TODO: integrate with zod
     if (recaptchaSiteKey && !recaptchaToken) {
       alert('Please complete the reCAPTCHA');
       return;
     }
 
+    const payload = {
+      ...formData,
+      [SignUpField.recaptchaToken]: recaptchaToken ?? '',
+    };
+
     handleSubmit({
-      e: e as React.FormEvent<HTMLFormElement>,
+      e,
       action,
-      formData,
+      formData: payload,
       setError,
       recaptchaToken,
     });
@@ -101,7 +107,16 @@ export const SignUp = ({
       </S.FieldGroup>
 
       {recaptchaSiteKey && (
-        <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={setRecaptchaToken} />
+        <ReCAPTCHA
+          sitekey={recaptchaSiteKey}
+          onChange={(token) => {
+            setRecaptchaToken(token);
+            setFormData((prev) => ({
+              ...prev,
+              [SignUpField.recaptchaToken]: token ?? '',
+            }));
+          }}
+        />
       )}
 
       <S.StyledButton text="Create Account" type="submit" />
