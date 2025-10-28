@@ -1,6 +1,6 @@
 import { Dispatch, FormEvent, SetStateAction } from 'react';
 import { z } from 'zod';
-import { FormData, SignUpProps } from '../SignUp.types';
+import { FormData, SignUpProps, SignUpField } from '../SignUp.types';
 import { SignUpSchema } from '../SignUp.schema';
 
 export type FieldError = Partial<Record<keyof FormData, string>>;
@@ -42,7 +42,10 @@ export const handleSubmit = async ({
 }: Props) => {
   e.preventDefault();
 
-  const result = SignUpSchema.safeParse({ ...formData, recaptchaToken });
+  const result = SignUpSchema.safeParse({
+    ...formData,
+    [SignUpField.recaptchaToken]: recaptchaToken ?? '',
+  });
 
   if (!result.success) {
     const fieldErrors: FieldError = {};
