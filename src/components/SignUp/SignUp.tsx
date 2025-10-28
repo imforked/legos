@@ -42,6 +42,8 @@ export const SignUp = ({
       [SignUpField.recaptchaToken]: recaptchaToken ?? '',
     };
 
+    console.log('Submitting payload:', payload);
+
     handleSubmit({
       e,
       action,
