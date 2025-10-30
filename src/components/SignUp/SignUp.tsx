@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import {
   SignUpVariant,
   type SignUpProps,
@@ -32,37 +31,65 @@ export const SignUp = ({
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (recaptchaSiteKey && window.grecaptcha) {
-      const token = await window.grecaptcha.execute(recaptchaSiteKey, {
-        action: 'sign-up',
-      });
-      setRecaptchaToken(token);
+    if (recaptchaSiteKey && window.grecaptcha?.enterprise) {
+      try {
+        const token = await window.grecaptcha.enterprise.execute(
+          recaptchaSiteKey,
+          { action: 'sign-up' }
+        );
+        setRecaptchaToken(token);
 
-      const payload = {
-        ...formData,
-        [SignUpField.recaptchaToken]: token,
-      };
+        const payload = {
+          ...formData,
+          [SignUpField.recaptchaToken]: token,
+        };
 
-      console.log('Submitting payload:', payload);
+        console.log('Submitting payload:', payload);
 
-      handleSubmit({
-        e,
-        action,
-        formData: payload,
-        setError,
-        recaptchaToken: token,
-      });
+        handleSubmit({
+          e,
+          action,
+          formData: payload,
+          setError,
+          recaptchaToken: token,
+        });
+      } catch (err) {
+        console.error('⚠️ reCAPTCHA execute failed:', err);
+      }
     } else {
       console.error('⚠️ reCAPTCHA not loaded or site key missing');
     }
   };
 
   useEffect(() => {
-    if (recaptchaSiteKey && window.grecaptcha) {
-      window.grecaptcha.ready(() => {
-        console.log('✅ reCAPTCHA ready');
-      });
-    }
+    if (!recaptchaSiteKey) return;
+
+    const checkRecaptcha = () => {
+      const enterprise = window.grecaptcha?.enterprise;
+      if (enterprise?.ready) {
+        console.log('✅ reCAPTCHA Enterprise loaded');
+        enterprise.ready(() => {
+          enterprise
+            .execute(recaptchaSiteKey, { action: 'sign-up' })
+            .then((token: string) => {
+              setRecaptchaToken(token);
+              setFormData((prev) => ({
+                ...prev,
+                [SignUpField.recaptchaToken]: token,
+              }));
+            })
+            .catch((err) => console.error('reCAPTCHA execute error:', err));
+        });
+      }
+
+      return false;
+    };
+
+    const interval = setInterval(() => {
+      if (checkRecaptcha()) clearInterval(interval);
+    }, 300);
+
+    return () => clearInterval(interval);
   }, [recaptchaSiteKey]);
 
   return (
