@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import {
   SignUpVariant,
@@ -29,29 +29,41 @@ export const SignUp = ({
   const [error, setError] = useState<FieldError>({});
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (recaptchaSiteKey && !recaptchaToken) {
-      alert('Please complete the reCAPTCHA');
-      return;
+    if (recaptchaSiteKey && window.grecaptcha) {
+      const token = await window.grecaptcha.execute(recaptchaSiteKey, {
+        action: 'sign-up',
+      });
+      setRecaptchaToken(token);
+
+      const payload = {
+        ...formData,
+        [SignUpField.recaptchaToken]: token,
+      };
+
+      console.log('Submitting payload:', payload);
+
+      handleSubmit({
+        e,
+        action,
+        formData: payload,
+        setError,
+        recaptchaToken: token,
+      });
+    } else {
+      console.error('⚠️ reCAPTCHA not loaded or site key missing');
     }
-
-    const payload = {
-      ...formData,
-      [SignUpField.recaptchaToken]: recaptchaToken ?? '',
-    };
-
-    console.log('Submitting payload:', payload);
-
-    handleSubmit({
-      e,
-      action,
-      formData: payload,
-      setError,
-      recaptchaToken,
-    });
   };
+
+  useEffect(() => {
+    if (recaptchaSiteKey && window.grecaptcha) {
+      window.grecaptcha.ready(() => {
+        console.log('✅ reCAPTCHA ready');
+      });
+    }
+  }, [recaptchaSiteKey]);
 
   return (
     <S.SignUpContainer
@@ -107,20 +119,6 @@ export const SignUp = ({
           errorMessage={error.passwordCheck}
         />
       </S.FieldGroup>
-
-      {recaptchaSiteKey && (
-        <ReCAPTCHA
-          sitekey={recaptchaSiteKey}
-          onChange={(token) => {
-            setRecaptchaToken(token);
-            setFormData((prev) => ({
-              ...prev,
-              [SignUpField.recaptchaToken]: token ?? '',
-            }));
-          }}
-        />
-      )}
-
       <S.StyledButton text="Create Account" type="submit" />
     </S.SignUpContainer>
   );
