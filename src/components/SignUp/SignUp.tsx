@@ -35,7 +35,7 @@ export const SignUp = ({
       try {
         const token = await window.grecaptcha.enterprise.execute(
           recaptchaSiteKey,
-          { action: 'sign-up' }
+          { action: 'signup' }
         );
         setRecaptchaToken(token);
 
@@ -70,7 +70,7 @@ export const SignUp = ({
         console.log('✅ reCAPTCHA Enterprise loaded');
         enterprise.ready(() => {
           enterprise
-            .execute(recaptchaSiteKey, { action: 'sign-up' })
+            .execute(recaptchaSiteKey, { action: 'signup' })
             .then((token: string) => {
               setRecaptchaToken(token);
               setFormData((prev) => ({

@@ -14,7 +14,7 @@ type Props = {
 };
 
 /**
- * Handles form submission for the sign-up flow.
+ * Handles form submission for the signup flow.
  *
  * This helper:
  * 1. Prevents the browser's default form submission behavior.
