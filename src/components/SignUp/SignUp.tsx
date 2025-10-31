@@ -80,7 +80,7 @@ export const SignUp = ({
             })
             .catch((err) => console.error('reCAPTCHA execute error:', err));
         });
-        return true; // <-- interval will now clear
+        return true;
       }
       return false;
     };
