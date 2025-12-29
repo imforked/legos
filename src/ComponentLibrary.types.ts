@@ -1,6 +1,8 @@
+import { ReactNode } from "react";
+
 export type LibraryData = {
   metaData: MetaData;
-  component: React.ReactNode;
+  component: () => ReactNode;
 }[];
 
 export type MetaData = {

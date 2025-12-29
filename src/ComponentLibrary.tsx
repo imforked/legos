@@ -8,7 +8,7 @@ function ComponentLibrary() {
         <S.Title>{metaData.title}</S.Title>
         <S.Description>{metaData.description}</S.Description>
       </S.MetaDescriptionContainer>
-      {component}
+      {component()}
     </S.ComponentContainer>
   ));
 }
