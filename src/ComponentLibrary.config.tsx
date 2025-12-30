@@ -41,7 +41,11 @@ export const LIBRARY_DATA: LibraryData = [
           <Modal
             isOpen={modalIsOpen}
             setIsOpen={setModalIsOpen}
-            content={'Modal content goes here.'}
+            content={
+              <div style={{ height: '100%', background: 'red' }}>
+                Modal content goes here.
+              </div>
+            }
           />
           <Button text="Show Modal" onClick={() => setModalIsOpen(true)} />
         </>

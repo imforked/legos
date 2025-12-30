@@ -39,4 +39,6 @@ export const CloseButton = styled.button`
   align-self: flex-end;
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  height: 100%;
+`;
